@@ -43,6 +43,7 @@ python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\acti
 pip install -r requirements.txt
 # If OCP fails, try: pip install pythonocc-core
 pip install -r requirements.txt
+
 ▶️ Run
 python -m src.dicom_to_cad \
   --dicom_dir ./examples/sample_series \
@@ -61,6 +62,7 @@ Key args
 --no_smooth: skip Laplacian smoothing (faster).
 
 --export_step, --export_iges: toggle CAD exports.
+
 📁 Outputs (in --out_dir)
 
 model.stl, optionally model.step, model.igs
@@ -68,9 +70,13 @@ model.stl, optionally model.step, model.igs
 metrics.json
 
 preview_slice.png, preview_seg.png, preview_mesh.png
+
+
 🖨️ Print flow
 
 Import model.stl into Cura/PrusaSlicer → scale/supports/infill → slice → print.
+
+
 ⚠️ Notes on STEP/IGES
 
 Exported STEP/IGES are faceted (triangulated) B-Reps reconstructed from the mesh; that’s expected when the source is voxel CT and not a native parametric CAD. For true NURBS/analytic surfaces, a dedicated reverse-engineering pipeline is required.
